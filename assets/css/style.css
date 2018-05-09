@@ -1,0 +1,30 @@
+body{
+    background: antiquewhite;
+}
+#style{
+ border-radius: 25px;
+ width: 95%;
+ margin-top: 15px;
+ margin: 0 auto;
+ background-color: #e9ecef;
+ margin-bottom: 20px;
+}
+.w-100{
+    margin-bottom: 20px;
+}
+#bottomstuff{
+    border-radius: 25px;
+    width: 95%;
+    margin-top: 15px;
+    margin: 0 auto;
+    background-color: #e9ecef;
+}
+.only{
+    font-size: 25px;
+}
+.single{
+    margin-left: 10px;
+}
+.btn{
+    margin-left: 10px;
+}
