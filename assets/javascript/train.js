@@ -59,8 +59,6 @@ nextTrain = moment().add(tMinutesTillTrain, "minutes");
 console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 nextTrain = moment(nextTrain).format("hh:mm")
 
-  // debugger;
-
 
 dataRef.ref().push({
 
