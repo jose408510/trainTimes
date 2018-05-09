@@ -21,8 +21,8 @@
 
       <table class="table" id="style">
             <thead >
-                <tr>
-            <th class="only"> <strong>Current Train Schdule </strong></th>
+                <tr class="only">
+            <th > <strong>Current Train Schdule </strong></th>
                 </tr>
               <tr>
                 <th>Train name</th> 
@@ -32,7 +32,7 @@
                 <th>Min Away</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="trainBody">
               <tr>
                 <td>Pinapple Express</td>
                 <td>Mexico</td>
@@ -40,13 +40,6 @@
                 <td>1:30PM</td>
                 <td>100min</td>
               </tr>
-              <tr>
-                <td id="train-display"></td>
-                <td id="destination-display"></td>
-                <td id="first-display"></td>
-                <td id="frequency-display"></td>
-              </tr>
-
             </tbody>
           </table>
           
@@ -112,6 +105,7 @@
 
 
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="assets/javascript/train.js"></script>
 </body>

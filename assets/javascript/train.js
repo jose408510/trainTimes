@@ -14,10 +14,14 @@ var config = {
   var destination = "";
   var first = "";
   var frequency = 0;
+  var tMinutesTillTrain;
+  var nextTrain;
+    // Assumptions
 
-  $('#addBtn').on("click", function(){
-    // event.preventDeafault();
+  $('#addBtn').on("click", function(event){
+    event.preventDefault();
 
+// ('currentTime').text('#mins-display');
  train = $('#train-Name').val().trim();
  destination = $('#destination-Time').val().trim();
  first = $('#first-Time').val().trim();
@@ -25,50 +29,56 @@ var config = {
 
 
 
+var tFrequency = parseInt(frequency);
+
+// Time is 3:30 AM
+var firstTime = first;
+
+// First Time (pushed back 1 year to make sure it comes before current time)
+var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+console.log(firstTimeConverted);
+
+// Current Time
+var currentTime = moment();
+console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+// Difference between the times
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+console.log("DIFFERENCE IN TIME: " + diffTime);
+
+// Time apart (remainder)
+var tRemainder = diffTime % tFrequency;
+console.log(tRemainder);
+
+// Minute Until Train
+tMinutesTillTrain = tFrequency - tRemainder;
+console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+// Next Train
+nextTrain = moment().add(tMinutesTillTrain, "minutes");
+console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+nextTrain = moment(nextTrain).format("hh:mm")
+
+  // debugger;
+
+
 dataRef.ref().push({
 
-train: train,
-destination: destination,
-first: first,
-frequency: frequency,
-dateAdded: firebase.database.ServerValue.TIMESTAMP
+  train: train,
+  destination: destination,
+  first: first,
+  frequency: frequency,
+  tMinutesTillTrain: tMinutesTillTrain,
+  nextTrain: nextTrain,
 
-
-
-
-});
-
+  dateAdded: firebase.database.ServerValue.TIMESTAMP
   
-
-  dataRef.ref().on("child_added", function(snapshot) {
-    // Log everything that's coming out of snapshot
-    console.log(snapshot.val());
-    console.log(snapshot.val().train);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().first);
-    console.log(snapshot.val().frequency);
-
-    $("#train-Name").text(snapshot.val().train);
-    $("#destination-Time").text(snapshot.val().destination);
-    $("#first-Time").text(snapshot.val().first);
-    $("#frequency-Input").text(snapshot.val().frequency);
-
-
-
-
-
-
-//   });
+  });
 
 
 });
 dataRef.ref().on("child_added", function(snapshot) {
-    // Change the HTML to reflect
-    $("#train-display").text(snapshot.val().train);
-    $("#destination-display").text(snapshot.val().destination);
-    $("#first-display").text(snapshot.val().first);
-    $("#frequency-display").text(snapshot.val().frequency);
-  });
-
+    
+$('#trainBody').append("<tr><td>" + snapshot.val().train + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency + "</td><td>" + snapshot.val().tMinutesTillTrain + "</td><td>" + snapshot.val().nextTrain + "</td></tr>")
 
 });
