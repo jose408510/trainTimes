@@ -40,6 +40,12 @@
                 <td>1:30PM</td>
                 <td>100min</td>
               </tr>
+              <tr>
+                <td id="train-display"></td>
+                <td id="destination-display"></td>
+                <td id="first-display"></td>
+                <td id="frequency-display"></td>
+              </tr>
 
             </tbody>
           </table>
@@ -58,30 +64,25 @@
             <form>
                 <div class="form-group">
                     <label for="">Train Name</label>
-                    <input type="text" class="form-control" id="trainNameInput">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Line</label>
-                    <input type="text" class="form-control" id="lineInput">
+                    <input type="text" class="form-control" id="train-Name">
                 </div>
 
                 <div class="form-group">
                     <label for="">Destination</label>
-                    <input type="text" class="form-control" id="destinationInput">
+                    <input type="text" class="form-control" id="destination-Time">
                 </div>
 
                 <div class="form-group">
                     <label for="">First Train Time (HH:mm - military time)</label>
-                    <input type="text" class="form-control" id="trainTimeInput">
+                    <input type="text" class="form-control" id="first-Time">
                 </div>
 
                 <div class="form-group">
                     <label for="">Frequency (min)</label>
-                    <input type="text" class="form-control" id="frequencyInput">
+                    <input type="text" class="form-control" id="frequency-Input">
                 </div>
                 
-                <input type="submit" class="btn btn-primary" id="addTrainBtn"></input>
+                <button type="button"class="btn btn-primary" id="addBtn">Submit</button>
             </form>
         </div>
     </div>
@@ -110,6 +111,7 @@
 
 
 
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="assets/javascript/train.js"></script>
 </body>
